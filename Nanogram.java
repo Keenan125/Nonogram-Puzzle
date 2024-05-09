@@ -5,8 +5,8 @@ import javax.swing.*;
 public class Nanogram{
 
     private GridLayout layout;
-    private JPanel panel;                                                                                                                                               
-
+    private JPanel panel;
+                                                                                                                                                  
 
     public Nanogram(){
     JFrame frame = new JFrame("**Nanograme Puzzle**");
@@ -17,8 +17,8 @@ public class Nanogram{
     panel.setLayout(layout);
 
     for (int i = 0; i < 15 * 15; i++) {
-        JButton button = new JButton(); // A simple JButton
-        panel.add(button); // Adding the button to the panel
+        NanogramCells cells = new NanogramCells(); // A simple JButton
+        panel.add(cells); // Adding the button to the panel
     }
 
 

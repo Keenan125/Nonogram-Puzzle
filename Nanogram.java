@@ -7,7 +7,8 @@ public class Nanogram{
     private GridLayout layout;
     private JPanel panel;
     private NanogramCells[][] cells;
-    private NanogramCells[] numOfCells;
+    private NanogramCells[] topRowCells;
+    private NanogramCells[] leftCollumnCells;
                                                                                                                                                   
 
     public Nanogram(){
@@ -31,22 +32,51 @@ public class Nanogram{
     }
 
     //Set the outer cells with integers in them with different color
-    numOfCells = new NanogramCells[30];
-    for(int i = 0; i < numOfCells.length; i++){
-        numOfCells[i] = new NanogramCells();
+    topRowCells = new NanogramCells[16];
+    for(int i = 0; i < topRowCells.length; i++){
+        topRowCells[i] = new NanogramCells();
+        topRowCells[i] = cells[0][i];
+        topRowCells[i].setBackground(Color.WHITE); // Sets cells background to white
     }
-    
-    NanogramCells numCell1 = numOfCells[0];
-    numOfCells[0] = cells[0][0];
-    numOfCells[0].setBackground(Color.WHITE);
 
+    leftCollumnCells = new NanogramCells[16];
+    for(int z = 0; z < leftCollumnCells.length; z++){
+        leftCollumnCells[z] = new NanogramCells();
+        leftCollumnCells[z] = cells[z][0];
+        leftCollumnCells[z].setBackground(Color.WHITE);
+    }
 
-    
-    
+    int[] topRowNumbers = {5, 3, 1, 1, 6, 3, 7, 3, 1, 2, 2, 1, 1, 3, 3, 5};
+    int[] leftColumnNumbers = {5, 1, 1, 1, 1, 1, 2, 1, 3, 2, 1, 1, 1, 1, 3, 4};
 
-    frame.setContentPane(panel);
-    frame.setSize(1500,1500);
-    frame.setVisible(true); //See the Layout of Panel
+        setTopRowNumbers(topRowNumbers);
+        setLeftColumnNumbers(leftColumnNumbers);
+
+        frame.setContentPane(panel);
+        frame.setSize(1500, 1500);
+        frame.setVisible(true);
+    }
+
+    // Method to set numbers for the top row
+    private void setTopRowNumbers(int[] numbers) {
+        topRowCells = new NanogramCells[16];
+        for (int i = 0; i < 16; i++) {
+            topRowCells[i] = cells[0][i];
+            topRowCells[i].setNumber(numbers[i] + "");
+            topRowCells[i].setBackground(Color.WHITE); // Sets cells background to white
+        }
+    }
+
+    // Method to set numbers for the left column
+    private void setLeftColumnNumbers(int[] numbers) {
+        leftCollumnCells = new NanogramCells[16];
+        for (int i = 0; i < 16; i++) {
+            leftCollumnCells[i] = cells[i][0];
+            leftCollumnCells[i].setNumber(numbers[i] + "");
+            leftCollumnCells[i].setBackground(Color.WHITE); // Sets cells background to white
+        }
+    }
+
 
 
 
@@ -57,4 +87,3 @@ public class Nanogram{
 
 
    
-}

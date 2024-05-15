@@ -28,15 +28,6 @@ public class NanogramCells extends JButton implements ActionListener{
 
     }
 
-    public void setNumber(String number) {
-        setText(number); // text of button
-        setOpaque(false); // make cell invisble 
-        setContentAreaFilled(false); 
-        setBorderPainted(false);  // hide the border of cell
-        setHorizontalAlignment(SwingConstants.CENTER); 
-        setFont(new Font("Arial", Font.BOLD, 14)); 
-        setForeground(Color.BLACK); // make color black
-    }
 
     public boolean isFilled(){
 

@@ -7,19 +7,35 @@ public class ImageBMP{
 
     public ImageBMP() throws FileNotFoundException{
 
-        fileInput = new FileInputStream("bmp-files/elephant.bmp");
-        newfile = new File("bmp-files/elephant.bmp");
+        this.fileInput = new FileInputStream("elephant.bmp");
 
-        fileInput = new FileInputStream(newfile);
+        
+
+
+
 
 
     }
 
-    public int read(int r) throws IOException{
+    public int read(int b) throws IOException{
+
+        byte[] byteRead = new byte[225];
+
+        fileInput.skip(61); //skip first 61 bytes
+
+        int i = 62;
+        while(i >= 62){
+            fileInput.read();
+        }
+
+
+
         
 
 
-        return r;
+
+
+        return read(b);
     }
 
 

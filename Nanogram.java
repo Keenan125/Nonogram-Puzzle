@@ -1,4 +1,8 @@
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.IOException;
+
 import javax.swing.*;
 
 
@@ -14,7 +18,7 @@ public class Nanogram{
     
                                                                                                                                                   
 
-    public Nanogram(){
+    public Nanogram() throws IOException{
     JFrame frame = new JFrame("**Nanograme Puzzle**");
     frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
@@ -44,6 +48,9 @@ public class Nanogram{
         {0,0,0,0,1,1,1,1,1,1,1,1,1,1,1}};
 
     cells = new NanogramCells[15][15];
+    
+    
+
 
     topRow = new JPanel[15]; //15 panels for top row
     collumnLeft = new JPanel[15]; //15 panels for collumn
@@ -66,6 +73,10 @@ public class Nanogram{
             panel.add(cell); // Add the cell to the panel
         }
     }
+
+
+
+
     //scan rows
     for (int j = 0; j < 15; j++) {
         StringBuilder countBuilder = new StringBuilder();
@@ -144,12 +155,30 @@ public class Nanogram{
     button = new JButton("Finished Game!");
     button.setVisible(true);
 
+    button.addActionListener(new ActionListener() {
+        public void actionPerformed(ActionEvent e){
+            if(GameFinished(pixels)){
+                System.out.println("Game finished!");
+
+            }
+            else{
+                System.out.println("Game not over!");
+            }
+
+
+            
+        }
+    });
+
+
+
+
+
+
     JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.CENTER)); //makes panel for the button to be centred below grid
     buttonPanel.add(button);
 
     panel.add(buttonPanel, BorderLayout.SOUTH);
-    
-
 
     
 
@@ -161,6 +190,25 @@ public class Nanogram{
         frame.setVisible(true);
     }
 
+    public boolean GameFinished(int[][] pixels){
+        for(int i = 0; i < pixels.length; i++){
+            for(int j = 0; j < pixels[i].length; j++){
+                if(pixels[i][j] == 1 && !cells[i][j].getBackground().equals(Color.BLACK)) // if background black and 1 then wll go true else false
+                return false;
+                if(pixels[i][j] == 0 && cells[i][j].getBackground().equals(Color.BLACK))
+                return false;
+
+                
+            }
+        }
+        
+
+
+        return true;
+
+    }
+
+
    
 
 
@@ -168,6 +216,8 @@ public class Nanogram{
 
 
     }
+
+    
     
 
 

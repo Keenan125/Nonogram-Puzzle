@@ -1,9 +1,9 @@
-
+import java.io.IOException;
 
 class Main{
 
-    public static void main(String[] args){
-        Nanogram nano = new Nanogram();
+    public static void main(String[] args) throws IOException{
+        new Nanogram();
         
     }
 }

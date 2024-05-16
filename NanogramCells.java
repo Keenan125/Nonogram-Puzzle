@@ -13,8 +13,8 @@ public class NanogramCells extends JButton implements ActionListener{
 
         this.pixel = pixel;
 
-        setBackground(Color.yellow); //Sets cell to start white
-        setBorder(BorderFactory.createLineBorder(Color.BLACK)); //Sets border to black
+        this.setBackground(Color.WHITE); //Sets cell to start white
+        this.setBorder(BorderFactory.createLineBorder(Color.BLACK)); //Sets border to black
 
        addActionListener(this);
 
@@ -22,7 +22,7 @@ public class NanogramCells extends JButton implements ActionListener{
 
     }
 
-    public int getPixel(){
+    public int getPixel(int pixelVal){
 
         return pixel;
 
@@ -44,7 +44,7 @@ public class NanogramCells extends JButton implements ActionListener{
             setBackground(Color.BLACK); //if clicked goes to black
         }
         else{
-            setBackground(Color.yellow);
+            setBackground(Color.WHITE);
         }
 
         
